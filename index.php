@@ -109,7 +109,7 @@ $vote = $_GET['vote'] ?? false;
                         }
                         // filtro sul voto
                         if(is_numeric($vote) && $vote <= 5  && $key === 'vote'){
-                            if($info != $vote)$save = false;
+                            if($info < $vote)$save = false;
                         }
                         if ($info === true) $info = 'true';
                         if ($info === false) $info = 'false';
