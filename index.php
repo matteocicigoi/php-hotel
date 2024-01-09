@@ -103,10 +103,13 @@ $vote = $_GET['vote'] ?? false;
                     $save = true;
                     // recupera le informazini
                     foreach ($hotel as $key => $info) {
-                        // se il filtro è su parking e la chiave è parking
+                        // filtro sul parking
                         if($parking === 'on' && $key === 'parking'){
-                            // se è falsa imposta la variabile su false
                             if($info === false)$save = false;
+                        }
+                        // filtro sul voto
+                        if(is_numeric($vote) && $vote <= 5  && $key === 'vote'){
+                            if($info != $vote)$save = false;
                         }
                         if ($info === true) $info = 'true';
                         if ($info === false) $info = 'false';
